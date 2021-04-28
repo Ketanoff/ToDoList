@@ -1,0 +1,9 @@
+
+.title {
+    flex-grow: 1;
+    /*color: black;*/
+}
+
+.appBar {
+    background-color: darkgoldenrod;
+}
