@@ -8,28 +8,28 @@ type AddItemFormPropsType = {
 
 export function AddItemForm (props: AddItemFormPropsType) {
     
-    let [title, setTitle] = useState('')
-    let [error, setError] = useState<string | null>(null)
+    let [title, setTitle] = useState('');
+    let [error, setError] = useState<string | null>(null);
     
-    const addTask = () => {
+    const addItem = () => {
         if (title.trim() !== '') {
-            props.addItem(title.trim());
+            props.addItem(title);
             setTitle('');
         } else {
             setError('Title is required');
         }
-    }
+    };
     
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
-    }
+        setTitle(e.currentTarget.value);
+    };
     
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null);
         if (e.charCode === 13) {
-            addTask();
+            addItem();
         }
-    }
+    };
     return <div>
         <TextField value={title}
                    onChange={onChangeHandler}
@@ -39,9 +39,9 @@ export function AddItemForm (props: AddItemFormPropsType) {
                    error={!!error}
             // className={error ? 'error' : ''}
         />
-        <IconButton color='primary' onClick={addTask}>
+        <IconButton color='primary' onClick={addItem}>
             <AddBox/>
         </IconButton>
         {/*{error && <div className='error-message'>{error}</div>}*/}
-    </div>
+    </div>;
 }
